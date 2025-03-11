@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">mmm</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="intro_get_started">Get Started</string>
+    <string name="intro_next">Next</string>
+    <string name="intro_skip">Skip</string>
+
+    <string name="intro_title_1">Welcome to the App</string>
+    <string name="intro_description_1">This is your first step in exploring our features.</string>
+
+    <string name="intro_title_2">Stay Connected</string>
+    <string name="intro_description_2">Engage with the community easily.</string>
+
+    <string name="intro_title_3">Enjoy Seamless Experience</string>
+    <string name="intro_description_3">Get the best out of our app with a smooth interface.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+</resources>
