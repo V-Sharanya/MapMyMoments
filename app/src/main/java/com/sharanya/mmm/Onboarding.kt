@@ -25,7 +25,7 @@ class Onboarding : AppCompatActivity() {
         skipbtn = findViewById(R.id.skipButton)
 
         skipbtn.setOnClickListener {
-            val i = Intent(this, MainActivity::class.java)
+            val i = Intent(this, login::class.java)
             startActivity(i)
             finish()
         }
@@ -40,7 +40,7 @@ class Onboarding : AppCompatActivity() {
     }
 
     private fun setUpIndicator(position: Int) {
-        dots = Array(3) { TextView(this) }
+        dots = Array(2) { TextView(this) }
         mDotLayout.removeAllViews()
 
         for (i in dots.indices) {

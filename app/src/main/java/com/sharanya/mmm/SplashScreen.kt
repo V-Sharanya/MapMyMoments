@@ -19,7 +19,7 @@ class SplashScreen : AppCompatActivity() {
             val intent = Intent(this@SplashScreen, Onboarding::class.java)
             startActivity(intent)
             finish()
-        }, 3000) // 3-second delay
+        }, 5000) // 3-second delay
     }
 
     override fun onDestroy() {

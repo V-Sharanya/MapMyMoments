@@ -5,4 +5,8 @@
     <color name="orange">#ff9000</color>
     <color name="inactive">#C4C4C4</color>
     <color name="active">#50C2C9</color>
+    <color name="app_bar">#C77986</color>
+    <color name="heading">#fffdd0</color>
+    <color name="purple_500">#6200EE</color>
+    <color name="teal_700">#018786</color>
 </resources>

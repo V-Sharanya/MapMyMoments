@@ -57,3 +57,4 @@ class Prev_tripFragment : Fragment() {
             }
     }
 }
+

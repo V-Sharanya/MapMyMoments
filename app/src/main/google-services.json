@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1028380861385",
+    "project_id": "mapmymoments-4fefc",
+    "storage_bucket": "mapmymoments-4fefc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1028380861385:android:f8a4a1590d131b112abe18",
+        "android_client_info": {
+          "package_name": "com.sharanya.mmm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2WI7QOdQQLvQGjbpb-N4eeaVXmcqvHjg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

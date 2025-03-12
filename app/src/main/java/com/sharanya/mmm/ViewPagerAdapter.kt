@@ -11,8 +11,7 @@ class ViewPagerAdapter(private val context: Context) : PagerAdapter() {
 
     private val images = intArrayOf(
         R.drawable.image1,
-        R.drawable.image2,
-        R.drawable.image3
+        R.drawable.image2
     )
 
     override fun getCount(): Int {

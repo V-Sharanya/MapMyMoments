@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="30dp"
+    android:background="@drawable/loginbg"
+    tools:context=".login">
+
+    <!-- Buttons aligned at the bottom in a horizontal manner -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/logbtn"
+            android:text="LOGIN"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:layout_width="130dp"
+            android:layout_height="55dp"
+            android:layout_marginRight="20dp"
+            android:backgroundTint="@color/white" /> <!-- Adds space to the right -->
+
+        <Button
+            android:id="@+id/signupbtn"
+            android:text="SIGN UP"
+            android:textStyle="bold"
+            android:textSize="17sp"
+            android:textColor="@color/black"
+            android:layout_width="130dp"
+            android:layout_height="55dp"
+            android:backgroundTint="@color/white"/>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

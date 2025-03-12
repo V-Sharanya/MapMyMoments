@@ -14,7 +14,7 @@
     <com.airbnb.lottie.LottieAnimationView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="3"
+        android:layout_weight="4"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/mmm"/>
@@ -26,8 +26,7 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:gravity="center"
-        android:background="@color/white"
-        android:padding="16dp">
+        android:background="@color/white">
 
         <TextView
             android:layout_width="wrap_content"
