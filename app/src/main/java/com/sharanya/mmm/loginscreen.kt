@@ -24,7 +24,6 @@ class loginscreen : AppCompatActivity() {
         }
 
 
-
     }
 
 
