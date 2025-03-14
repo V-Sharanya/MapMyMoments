@@ -1,71 +1,118 @@
 package com.sharanya.mmm
 
-import android.graphics.Color
+import android.content.pm.ActivityInfo
+import android.content.res.Configuration
 import android.os.Bundle
-import android.view.View // ✅ Import this to fix the error
-import androidx.preference.CheckBoxPreference
-import androidx.preference.ListPreference
-import androidx.preference.PreferenceFragmentCompat
-import androidx.preference.PreferenceManager
+import android.view.View
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
+import androidx.preference.*
 
 class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        listView.setPadding(0, 60, 0, 0) // Adds 32dp top padding
+        listView.setPadding(0, 60, 0, 0) // Adds padding for better UI
         listView.clipToPadding = false
-    // Ensures padding is visible
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
         setPreferencesFromResource(R.xml.fragment_settings, rootKey)
-        loadSetting()
+        val sharedPreferences = PreferenceManager.getDefaultSharedPreferences(requireContext())
 
-        val chkNightInstant = findPreference<CheckBoxPreference>("NIGHT")
-        chkNightInstant?.setOnPreferenceChangeListener { _, newValue ->
-            val isNight = newValue as Boolean
-            updateBackgroundColor(isNight)
+        // 🌙 Night Mode Toggle
+        val nightModePref = findPreference<CheckBoxPreference>("NIGHT")
+        nightModePref?.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_dark_mode)
+        nightModePref?.setOnPreferenceChangeListener { _, newValue ->
+            val isNightMode = newValue as Boolean
+            AppCompatDelegate.setDefaultNightMode(
+                if (isNightMode) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+            )
+            requireActivity().recreate() // Fixes redirection issue
             true
         }
 
-        val listPreference = findPreference<ListPreference>("ORIENTATION")
-        listPreference?.setOnPreferenceChangeListener { preference, newValue ->
+        // 🔔 Notifications Toggle
+        val notificationsPref = findPreference<CheckBoxPreference>("NOTIFICATIONS")
+        notificationsPref?.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_notifications)
+        notificationsPref?.setOnPreferenceChangeListener { _, newValue ->
+            Toast.makeText(
+                requireContext(),
+                if (newValue as Boolean) "Notifications Enabled" else "Notifications Disabled",
+                Toast.LENGTH_SHORT
+            ).show()
+            true
+        }
+
+        // 🌍 Language Selection
+        val languagePref = findPreference<ListPreference>("LANGUAGE")
+        languagePref?.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_language)
+        languagePref?.setOnPreferenceChangeListener { preference, newValue ->
+            val languageIndex = (preference as ListPreference).findIndexOfValue(newValue as String)
+            val selectedLanguage = preference.entries[languageIndex] // Corrected toast message
+            preference.summary = selectedLanguage
+            Toast.makeText(requireContext(), "Language set to $selectedLanguage", Toast.LENGTH_SHORT).show()
+            true
+        }
+
+        // 🔄 Orientation Selection (Fixed Restart Issue)
+        val orientationPref = findPreference<ListPreference>("ORIENTATION")
+        orientationPref?.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_orientation)
+        orientationPref?.setOnPreferenceChangeListener { _, newValue ->
             val orientation = newValue as String
-            updateOrientation(orientation)
-            (preference as ListPreference).summary =
-                preference.entries[preference.findIndexOfValue(orientation)]
+            requireActivity().requestedOrientation = when (orientation) {
+                "portrait" -> ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                "landscape" -> ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                else -> ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+            }
+            requireActivity().recreate() // Fixes redirection issue
             true
         }
-    }
 
-    private fun loadSetting() {
-        val sp = PreferenceManager.getDefaultSharedPreferences(requireContext())
-        val chkNight = sp.getBoolean("NIGHT", false)
-        updateBackgroundColor(chkNight)
+        // 🔑 Logout
+        val logoutPref = findPreference<Preference>("LOGOUT")
+        logoutPref?.setOnPreferenceClickListener {
+            Toast.makeText(requireContext(), "Logged Out", Toast.LENGTH_SHORT).show()
+            requireActivity().finishAffinity()
+            true
+        }
 
-        val orientation = sp.getString("ORIENTATION", "false") ?: "false"
-        updateOrientation(orientation)
-    }
-
-    private fun updateBackgroundColor(isNight: Boolean) {
-        val recyclerView = listView
-        recyclerView?.setBackgroundColor(
-            if (isNight) Color.parseColor("#222222") else Color.parseColor("#ffffff")
-        )
-    }
-
-    private fun updateOrientation(orientation: String) {
-        activity?.requestedOrientation = when (orientation) {
-            "1" -> android.content.pm.ActivityInfo.SCREEN_ORIENTATION_BEHIND
-            "2" -> android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
-            "3" -> android.content.pm.ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
-            else -> android.content.pm.ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        // ℹ️ About App Section
+        val aboutPref = findPreference<Preference>("ABOUT_APP")
+        aboutPref?.icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_info)
+        aboutPref?.setOnPreferenceClickListener {
+            val versionName = requireContext().packageManager.getPackageInfo(requireContext().packageName, 0).versionName
+            val aboutDetails = """
+                App Name: Map My Moments
+                Version: $versionName
+                Developed by: Sharanya & Team
+            """.trimIndent()
+            aboutPref.summary = aboutDetails
+            true
         }
     }
 
     override fun onResume() {
         super.onResume()
-        loadSetting()
+        applySettings()
+    }
+
+    private fun applySettings() {
+        val sp = PreferenceManager.getDefaultSharedPreferences(requireContext())
+
+        // Night Mode
+        val isNightMode = sp.getBoolean("NIGHT", false)
+        AppCompatDelegate.setDefaultNightMode(
+            if (isNightMode) AppCompatDelegate.MODE_NIGHT_YES else AppCompatDelegate.MODE_NIGHT_NO
+        )
+
+        // Orientation
+        val orientation = sp.getString("ORIENTATION", "portrait") ?: "portrait"
+        requireActivity().requestedOrientation = when (orientation) {
+            "portrait" -> ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            "landscape" -> ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+            else -> ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+        }
     }
 }

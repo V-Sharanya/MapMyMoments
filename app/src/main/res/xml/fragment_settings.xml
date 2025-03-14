@@ -1,25 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.preference.PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
+<PreferenceScreen
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory android:title="Enable the Night mode">
-
+    <!-- Appearance Section -->
+    <PreferenceCategory app:title="Appearance">
         <CheckBoxPreference
-            android:title="Night Mode"
-            android:key="NIGHT"
-            android:defaultValue="false"
-            android:summaryOff="Night mode is deactivated"/>
-    </PreferenceCategory>
+            app:key="NIGHT"
+            app:title="Night Mode"
+            app:summary="Enable dark theme for the entire app"
+            app:icon="@drawable/ic_dark_mode" />
 
-    <PreferenceCategory android:title="Screen Orientation">
         <ListPreference
-            android:key="ORIENTATION"
-            android:entries="@array/items_name"
-            android:entryValues="@array/items_value"
-            
-            android:title="Orientation"
-            android:defaultValue="1"/> <!-- Ensure this value matches entryValues -->
+            app:key="ORIENTATION"
+            app:title="Screen Orientation"
+            app:summary="Choose Portrait or Landscape mode"
+            app:dialogTitle="Select Orientation"
+            app:entries="@array/orientation_names"
+            app:entryValues="@array/orientation_values"
+            app:icon="@drawable/ic_orientation" />
     </PreferenceCategory>
 
-</androidx.preference.PreferenceScreen>
+    <!-- Preferences Section -->
+    <PreferenceCategory app:title="Preferences">
+        <CheckBoxPreference
+            app:key="NOTIFICATIONS"
+            app:title="Enable Notifications"
+            app:summary="Turn on app notifications"
+            app:icon="@drawable/ic_notifications" />
+
+        <ListPreference
+            app:key="LANGUAGE"
+            app:title="Language"
+            app:summary="Choose your preferred language"
+            app:dialogTitle="Select Language"
+            app:entries="@array/language_names"
+            app:entryValues="@array/language_values"
+            app:icon="@drawable/ic_language" />
+    </PreferenceCategory>
+
+    <!-- Account Section -->
+    <PreferenceCategory app:title="Account">
+        <Preference
+            app:key="LOGOUT"
+            app:title="Log Out"
+            app:summary="Sign out of your account"
+            app:icon="@drawable/ic_logout" />
+
+        <Preference
+            app:key="ABOUT_APP"
+            app:title="About App"
+            app:summary="Version 1.0.0 \nDeveloped by Sharanya and Team"
+            app:icon="@drawable/ic_info" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

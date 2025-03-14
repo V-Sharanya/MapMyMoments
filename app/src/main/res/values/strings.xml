@@ -1,20 +1,47 @@
 <resources>
-    <string name="app_name">mmm</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="intro_get_started">Get Started</string>
-    <string name="intro_next">Next</string>
-    <string name="intro_skip">Skip</string>
+    <!-- App Name -->
+    <string name="app_name">MapMyMoments</string>
 
-    <string name="intro_title_1">Welcome to the App</string>
-    <string name="intro_description_1">This is your first step in exploring our features.</string>
+    <!-- About App Information -->
+    <string name="about_app">About App</string>
+    <string name="about_app_description">MapMyMoments helps you capture and share your best moments. Version 1.0</string>
+    <string name="created_by">Created by: Your Name</string>
 
-    <string name="intro_title_2">Stay Connected</string>
-    <string name="intro_description_2">Engage with the community easily.</string>
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="appearance">Appearance</string>
+    <string name="night_mode">Night Mode</string>
+    <string name="screen_orientation">Screen Orientation</string>
+    <string name="preferences">Preferences</string>
+    <string name="enable_notifications">Enable Notifications</string>
+    <string name="language">Language</string>
+    <string name="account">Account</string>
+    <string name="log_out">Log Out</string>
+    <string name="log_out_description">Sign out of your account</string>
 
-    <string name="intro_title_3">Enjoy Seamless Experience</string>
-    <string name="intro_description_3">Get the best out of our app with a smooth interface.</string>
+    <!-- Language Selection -->
+    <string-array name="language_names">
+        <item>English</item>
+        <item>French</item>
+        <item>Spanish</item>
+    </string-array>
+
+    <string-array name="language_values">
+        <item>en</item>
+        <item>fr</item>
+        <item>es</item>
+    </string-array>
+
+    <!-- Screen Orientation Options -->
+    <string-array name="orientation_names">
+        <item>Portrait</item>
+        <item>Landscape</item>
+    </string-array>
+
+    <string-array name="orientation_values">
+        <item>portrait</item>
+        <item>landscape</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
-
 </resources>
