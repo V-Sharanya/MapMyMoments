@@ -1,5 +1,6 @@
 package com.sharanya.mmm
 
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.os.Bundle
@@ -74,9 +75,15 @@ class SettingsFragment : PreferenceFragmentCompat() {
         val logoutPref = findPreference<Preference>("LOGOUT")
         logoutPref?.setOnPreferenceClickListener {
             Toast.makeText(requireContext(), "Logged Out", Toast.LENGTH_SHORT).show()
-            requireActivity().finishAffinity()
+
+            // Start LoginActivity
+            val intent = Intent(requireContext(), login::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+
             true
         }
+
 
         // ℹ️ About App Section
         val aboutPref = findPreference<Preference>("ABOUT_APP")

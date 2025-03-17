@@ -1,11 +1,10 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.Mmm" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
-        <item name="colorPrimary">#6200EE</item>
+        <!-- Dark Theme Colors -->
+        <item name="colorPrimary">#BB86FC</item>
         <item name="colorSecondary">#03DAC5</item>
-        <item name="android:colorBackground">#FFFFFF</item>
+        <item name="android:colorBackground">#121212</item> <!-- Dark background -->
+        <item name="android:textColorPrimary">#FFFFFF</item> <!-- White text for contrast -->
         <item name="android:statusBarColor">?attr/colorPrimary</item>
     </style>
 </resources>
