@@ -1,43 +1,42 @@
-import android.net.Uri
+package com.sharanya.mmm
+
 import android.os.Bundle
-import android.provider.MediaStore
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ImageView
-import androidx.activity.result.contract.ActivityResultContracts
+import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
-import com.sharanya.mmm.R
 
 class EditProfileActivity : AppCompatActivity() {
 
-    private lateinit var profileImage: ImageView
-    private lateinit var editName: EditText
-    private lateinit var editBio: EditText
-    private lateinit var btnSave: Button
-
-    // Registering Activity Result API
-    private val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        uri?.let {
-            profileImage.setImageURI(it)
-        }
-    }
+    private lateinit var nameEditText: EditText
+    private lateinit var usernameEditText: EditText
+    private lateinit var ageEditText: EditText
+    private lateinit var genderSpinner: Spinner
+    private lateinit var saveButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
 
-        profileImage = findViewById(R.id.img_profile)
-        editName = findViewById(R.id.edit_name)
-        editBio = findViewById(R.id.edit_bio)
-        btnSave = findViewById(R.id.btn_save)
+        nameEditText = findViewById(R.id.editTextName)
+        usernameEditText = findViewById(R.id.editTextUsername)
+        ageEditText = findViewById(R.id.editTextAge)
+        genderSpinner = findViewById(R.id.spinnerGender)
+        saveButton = findViewById(R.id.buttonSave)
 
-        // Click on Profile Image to Change it
-        profileImage.setOnClickListener {
-            pickImageLauncher.launch("image/*")
-        }
+        val genderOptions = arrayOf("Male", "Female")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, genderOptions)
+        genderSpinner.adapter = adapter
 
-        // Save Changes
-        btnSave.setOnClickListener {
+        // Load existing data (Optional)
+        nameEditText.setText("Alekhya")
+        usernameEditText.setText("alekhya33@gmail.com")
+        ageEditText.setText("20")
+        genderSpinner.setSelection(1)
+
+        saveButton.setOnClickListener {
+            // Save logic (e.g., SharedPreferences or Database)
             finish()
         }
     }
