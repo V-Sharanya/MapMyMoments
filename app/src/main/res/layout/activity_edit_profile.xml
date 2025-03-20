@@ -2,48 +2,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="20dp"
-    android:gravity="center_horizontal">
+    android:padding="16dp">
 
-    <!-- Profile Image -->
-    <ImageView
-        android:id="@+id/img_profile"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/liveuser"
-        android:scaleType="centerCrop"
-        android:contentDescription="Profile Image"
-        android:layout_marginBottom="12dp"/>
-
-    <!-- Name -->
     <EditText
-        android:id="@+id/edit_name"
+        android:id="@+id/editTextName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Name"
-        android:textSize="16sp"
-        android:padding="10dp"
-        android:background="@android:drawable/editbox_background"/>
+        android:hint="Enter Name" />
 
-    <!-- Bio -->
     <EditText
-        android:id="@+id/edit_bio"
+        android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Bio"
-        android:textSize="16sp"
-        android:padding="10dp"
-        android:background="@android:drawable/editbox_background"
-        android:layout_marginTop="10dp"/>
+        android:hint="Enter Username"
+        android:inputType="textEmailAddress" />
 
-    <!-- Save Button -->
+    <EditText
+        android:id="@+id/editTextAge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Age"
+        android:inputType="number" />
+
+    <Spinner
+        android:id="@+id/spinnerGender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/buttonSave"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Changes"
-        android:textColor="@android:color/white"
-        android:backgroundTint="@color/purple_500"
+        android:text="Save"
         android:layout_marginTop="16dp"/>
-
 </LinearLayout>
