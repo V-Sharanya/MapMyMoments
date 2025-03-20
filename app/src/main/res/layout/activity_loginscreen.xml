@@ -44,15 +44,7 @@
                 android:textColor="#363A43"
                 android:gravity="center"
                 />
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Enter Email"
-                android:textSize="16sp"
-                android:layout_marginTop="16dp"
-                android:textStyle="bold"
-                android:textColor="#7A8089"
-                />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,21 +55,13 @@
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="e.g.John"
+                    android:hint="Enter User Name"
                     android:inputType="textEmailAddress"
                     android:textColor="#363A43"
                     android:textColorHint="#7A8089"
                     />
             </com.google.android.material.textfield.TextInputLayout>
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Enter Password"
-                android:textSize="16sp"
-                android:layout_marginTop="16dp"
-                android:textStyle="bold"
-                android:textColor="#7A8089"
-                />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -87,7 +71,7 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="e.g.John@123"
+                    android:hint="Enter Password"
                     android:inputType="textPassword"
                     android:textColor="#363A43"
                     android:textColorHint="#7A8089"
@@ -102,6 +86,15 @@
                 android:backgroundTint="#121D39"
                 android:textColor="@color/white"
                 />
+            <Button
+                android:id="@+id/btn_google_signin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sign in with Google"
+                android:backgroundTint="#DB4437"
+                android:textColor="@color/white"
+                android:layout_marginTop="16dp"/>
+
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
 
