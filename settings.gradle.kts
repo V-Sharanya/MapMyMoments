@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "mmm"
 include(":app")
- 
+include(":app:adminmodule")

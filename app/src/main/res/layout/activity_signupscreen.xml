@@ -56,6 +56,8 @@
                 <androidx.appcompat.widget.AppCompatEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:id="@+id/etName"
+
                     android:hint="Enter Name"
                     android:inputType="textCapWords"
                     android:textColor="#363A43"
@@ -71,7 +73,7 @@
                 style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
                 >
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/etName"
+                    android:id="@+id/etEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter Email"
@@ -92,27 +94,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Enter Password"
+                    android:id="@+id/edtPass"
                     android:inputType="textPassword"
                     android:textColor="#363A43"
                     android:textColorHint="#7A8089"
                     />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                style="@style/ThemeOverlay.Material3.AutoCompleteTextView.OutlinedBox"
-                android:layout_marginTop="10dp"
-                >
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword"
-                    android:textColor="#363A43"
-                    android:textColorHint="#7A8089"
-                    />
-            </com.google.android.material.textfield.TextInputLayout>
+
             <Button
                 android:id="@+id/btnStart"
                 android:layout_marginTop="16dp"

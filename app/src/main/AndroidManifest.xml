@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,7 +13,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mmm"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <activity
+            android:name=".AdminViewUsers"
+            android:exported="false" />
         <activity
             android:name=".signupscreen"
             android:exported="false" />
@@ -23,12 +29,6 @@
             android:exported="false" />
         <activity
             android:name=".Onboarding"
-            android:exported="false" />
-        <activity
-            android:name=".ItemContainerLayout"
-            android:exported="false" />
-        <activity
-            android:name=".OnboardingPage"
             android:exported="false" />
         <activity
             android:name=".SplashScreen"
