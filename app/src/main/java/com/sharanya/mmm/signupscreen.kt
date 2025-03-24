@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -16,12 +17,13 @@ class signupscreen : AppCompatActivity() {
     private lateinit var edtName: EditText
     private lateinit var etmail: EditText
     private lateinit var edtpass: EditText
-    private lateinit var btnStart:Button
+    private lateinit var btnStart: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_signupscreen)
+
         edtName = findViewById(R.id.etName)
         etmail = findViewById(R.id.etEmail)
         edtpass = findViewById(R.id.edtPass)
@@ -37,6 +39,7 @@ class signupscreen : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
     private fun registerUser() {
         val name = edtName.text.toString().trim()
         val email = etmail.text.toString().trim()
@@ -47,24 +50,23 @@ class signupscreen : AppCompatActivity() {
             return
         }
 
-        val user = users(name,email,password)
+        val user = users(name, email, password)
         RetrofitClient.instance.registerUser(user).enqueue(object : Callback<users> {
             override fun onResponse(call: Call<users>, response: Response<users>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@signupscreen, "Registration successful!", Toast.LENGTH_SHORT).show()
-                    finish()
+                    edtName.text.clear()
+                    etmail.text.clear()
+                    edtpass.text.clear()
                 } else {
                     Toast.makeText(this@signupscreen, "Registration failed!", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<users>, t: Throwable) {
+                Log.e("API_ERROR", "Error: ${t.message}")
                 Toast.makeText(this@signupscreen, "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })
-
     }
-
-
-
 }
