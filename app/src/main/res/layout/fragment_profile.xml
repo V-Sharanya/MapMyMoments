@@ -10,6 +10,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center">
+
         <TextView
             android:id="@+id/pro_name"
             android:layout_width="wrap_content"
@@ -18,9 +19,9 @@
             android:textSize="25sp"
             android:textStyle="bold"
             android:textColor="@color/blue"
-            android:layout_marginTop="80dp"
             android:gravity="start"
-            android:layout_gravity="start"/>
+            android:layout_gravity="start"
+            android:paddingBottom="10dp"/>
 
         <!-- Profile Card -->
         <LinearLayout
@@ -28,7 +29,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/profile_card_background"
             android:padding="20dp"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:elevation="8dp">
 
@@ -43,9 +44,9 @@
                     android:layout_height="80dp"
                     android:src="@drawable/avatar_placeholder"
                     android:scaleType="centerCrop"
+                    android:background="@drawable/circle_background"
                     android:layout_alignParentStart="true"
-                    android:layout_marginEnd="16dp"
-                    android:background="@drawable/circle_background"/>
+                    android:layout_marginEnd="16dp"/>
 
                 <!-- Camera Icon -->
                 <ImageView
@@ -58,7 +59,7 @@
                     android:background="@drawable/circle_background"
                     android:padding="4dp"/>
 
-                <!-- Name & Email -->
+                <!-- Name, Email, Age, Gender -->
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -81,6 +82,47 @@
                         android:text="alekhya33@gmail.com"
                         android:textSize="14sp"
                         android:textColor="@color/gray"/>
+
+                    <!-- Age & Gender in Profile Card -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Age: "
+                            android:textColor="@color/teal_700"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/userAge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="20"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"
+                            android:layout_marginEnd="15dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Gender: "
+                            android:textColor="@color/teal_700"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:id="@+id/userGender"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Female"
+                            android:textColor="@color/black"
+                            android:textSize="14sp"/>
+                    </LinearLayout>
                 </LinearLayout>
             </RelativeLayout>
 
@@ -95,73 +137,11 @@
                 android:layout_marginTop="8dp"/>
         </LinearLayout>
 
-        <!-- Age & Gender Row -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="left"
-            android:layout_marginTop="20dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="20dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/ageLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Age"
-                    android:textColor="@color/teal_700"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:id="@+id/userAge"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="20"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical"
-                android:layout_marginRight="20dp"
-                android:gravity="end">
-
-                <TextView
-                    android:id="@+id/genderLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Gender"
-                    android:textColor="@color/teal_700"
-                    android:textSize="16sp"
-                    android:textStyle="bold"/>
-
-                <TextView
-                    android:id="@+id/userGender"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Female"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"/>
-            </LinearLayout>
-        </LinearLayout>
-
         <!-- Activity Card -->
-
-        <!-- Edit Profile & Change Password Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/profile_card_background"
             android:elevation="8dp"
             android:orientation="vertical"
@@ -199,12 +179,13 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
+        <!-- Buttons -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center"
-            android:layout_marginTop="50dp">
+            android:layout_marginTop="30dp">
 
             <Button
                 android:id="@+id/editProfileButton"
@@ -213,7 +194,7 @@
                 android:text="Edit Profile"
                 android:background="@drawable/button_border"
                 android:textColor="@color/orange"
-                android:layout_marginEnd="40dp"/>
+                android:layout_marginEnd="20dp"/>
 
             <Button
                 android:id="@+id/changePasswordButton"
@@ -228,7 +209,7 @@
             android:id="@+id/deleteAccountButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="30dp"
             android:background="@drawable/button_border"
             android:text="Delete Account"
             android:textColor="@color/app_bar"/>

@@ -13,7 +13,7 @@ class AdminMainActivity : AppCompatActivity() {
 
         val bottomNavigationViewAdmin = findViewById<BottomNavigationView>(R.id.bottomNavigationViewAdmin)
 
-        // Load the default fragment (Dashboard) when activity starts
+        // Load default fragment when activity starts
         if (savedInstanceState == null) {
             replaceFragment(AdminHomeFragment())
         }
@@ -22,7 +22,8 @@ class AdminMainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.nav_dashboard -> replaceFragment(AdminHomeFragment())
                 R.id.nav_users -> replaceFragment(AdminUsersFragment())
-                R.id.nav_settings -> replaceFragment(SettingsFragment())
+                R.id.nav_settings -> replaceFragment(SettingsFragment()) // ADD THIS
+                else -> false
             }
             true
         }
@@ -31,6 +32,8 @@ class AdminMainActivity : AppCompatActivity() {
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
             .replace(R.id.adminfragmentloader, fragment)
+            .addToBackStack(null)
             .commit()
     }
 }
+

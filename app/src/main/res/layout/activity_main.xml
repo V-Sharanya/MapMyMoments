@@ -10,7 +10,9 @@
     <androidx.fragment.app.FragmentContainerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/fragmentloader"/>
+        android:id="@+id/fragmentloader"
+        android:layout_marginTop="75dp"
+        android:layout_marginBottom="75dp"/>
     <LinearLayout
         android:id="@+id/top_bar"
         android:layout_width="match_parent"

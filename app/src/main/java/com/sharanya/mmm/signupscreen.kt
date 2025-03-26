@@ -15,8 +15,8 @@ import retrofit2.Response
 
 class signupscreen : AppCompatActivity() {
     private lateinit var edtName: EditText
-    private lateinit var etmail: EditText
-    private lateinit var edtpass: EditText
+    private lateinit var etMail: EditText
+    private lateinit var edtPass: EditText
     private lateinit var btnStart: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,8 +25,8 @@ class signupscreen : AppCompatActivity() {
         setContentView(R.layout.activity_signupscreen)
 
         edtName = findViewById(R.id.etName)
-        etmail = findViewById(R.id.etEmail)
-        edtpass = findViewById(R.id.edtPass)
+        etMail = findViewById(R.id.etEmail)
+        edtPass = findViewById(R.id.edtPass)
         btnStart = findViewById(R.id.btnStart)
 
         btnStart.setOnClickListener {
@@ -42,8 +42,8 @@ class signupscreen : AppCompatActivity() {
 
     private fun registerUser() {
         val name = edtName.text.toString().trim()
-        val email = etmail.text.toString().trim()
-        val password = edtpass.text.toString().trim()
+        val email = etMail.text.toString().trim()
+        val password = edtPass.text.toString().trim()
 
         if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
@@ -56,15 +56,15 @@ class signupscreen : AppCompatActivity() {
                 if (response.isSuccessful) {
                     Toast.makeText(this@signupscreen, "Registration successful!", Toast.LENGTH_SHORT).show()
                     edtName.text.clear()
-                    etmail.text.clear()
-                    edtpass.text.clear()
+                    etMail.text.clear()
+                    edtPass.text.clear()
                 } else {
                     Toast.makeText(this@signupscreen, "Registration failed!", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<users>, t: Throwable) {
-                Log.e("API_ERROR", "Error: ${t.message}")
+                Log.e("API_ERROR", "Error:", t)
                 Toast.makeText(this@signupscreen, "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })

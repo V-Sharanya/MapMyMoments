@@ -19,7 +19,7 @@ class loginscreen : AppCompatActivity() {
         val backButton = findViewById<ImageButton>(R.id.backtologinbtn)
         val loginButton = findViewById<Button>(R.id.btnlogin)
         val emailEditText = findViewById<EditText>(R.id.etName)
-        val passwordEditText = findViewById<AppCompatEditText>(R.id.etPass)
+        val passwordEditText = findViewById<AppCompatEditText>(R.id.edtPass)
 
 
         backButton.setOnClickListener {

@@ -19,7 +19,6 @@
             android:background="@drawable/input_background"
             android:padding="16dp"
             android:elevation="5dp"
-            android:layout_marginTop="80dp"
             android:layout_marginHorizontal="10dp">
 
             <!-- Title -->

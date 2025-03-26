@@ -26,4 +26,14 @@
         android:textSize="16sp"
         android:textColor="#616161"
         android:text="User Email"/>
+
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Delete"
+        android:textColor="@android:color/white"
+        android:background="@android:color/holo_red_light"
+        android:layout_marginTop="8dp"/>
+
 </LinearLayout>

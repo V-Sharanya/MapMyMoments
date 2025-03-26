@@ -62,11 +62,6 @@ class ProfileFragment : Fragment() {
             pickImageLauncher.launch(intent)
         }
 
-        editProfileButton.setOnClickListener {
-            val intent = Intent(requireContext(), EditProfileActivity::class.java)
-            startActivity(intent)
-        }
-
         setAvatar.setOnClickListener {
             showAvatarDialog()
         }
