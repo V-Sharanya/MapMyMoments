@@ -45,34 +45,52 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Start Destination"
+                    android:hint="Location"
                     android:textColorHint="@color/black"
                     android:background="@drawable/input_background"
                     android:textColor="@color/black"
                     android:padding="14dp" />
 
-                <com.google.android.material.floatingactionbutton.FloatingActionButton
-                    android:id="@+id/addDestinationButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@android:drawable/ic_input_add"
-                    app:backgroundTint="@color/orange"
-                    app:maxImageSize="24dp"
-                    android:textColorHint="@color/black"
-                    android:layout_marginStart="10dp" />
+<!--                <FrameLayout-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content">-->
+
+<!--                    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                        android:id="@+id/addDestinationButton"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:src="@android:drawable/ic_input_add"-->
+<!--                        app:backgroundTint="@color/orange"-->
+<!--                        app:maxImageSize="24dp"-->
+<!--                        android:layout_marginStart="10dp" />-->
+<!--                </FrameLayout>-->
             </LinearLayout>
 
-            <!-- Date Input -->
+            <!-- End Destination Input -->
             <EditText
-                android:id="@+id/date"
+                android:id="@+id/endDestination"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Date"
+                android:hint="End Destination (Optional)"
                 android:textColor="@color/black"
-                android:textColorHint="@color/black"
                 android:background="@drawable/input_background"
                 android:padding="14dp"
+                android:visibility="gone"
                 android:layout_marginTop="10dp" />
+
+<!--            &lt;!&ndash; Date Input &ndash;&gt;-->
+<!--            <EditText-->
+<!--                android:id="@+id/date"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Date"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textColorHint="@color/black"-->
+<!--                android:background="@drawable/input_background"-->
+<!--                android:padding="14dp"-->
+<!--                android:layout_marginTop="10dp"-->
+<!--                android:focusable="false"-->
+<!--                android:clickable="true" />-->
 
             <!-- Description Input -->
             <EditText
@@ -125,17 +143,43 @@
                     android:padding="10dp" />
             </LinearLayout>
 
-            <!-- End Destination Input -->
+            <!-- Latitude & Longitude Inputs -->
             <EditText
-                android:id="@+id/endDestination"
+                android:id="@+id/latitude"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="End Destination"
+                android:hint="Latitude"
                 android:textColor="@color/black"
+                android:textColorHint="@color/black"
                 android:background="@drawable/input_background"
                 android:padding="14dp"
-                android:visibility="gone"
-                android:layout_marginTop="10dp" />
+                android:layout_marginTop="10dp"
+                android:focusable="false"
+                android:clickable="true" />
+
+            <EditText
+                android:id="@+id/longitude"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Longitude"
+                android:textColor="@color/black"
+                android:textColorHint="@color/black"
+                android:background="@drawable/input_background"
+                android:padding="14dp"
+                android:layout_marginTop="10dp"
+                android:focusable="false"
+                android:clickable="true" />
+
+            <!-- Get Location Button -->
+<!--            <Button-->
+<!--                android:id="@+id/getLocationButton"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Get Current Location"-->
+<!--                app:backgroundTint="@color/blue"-->
+<!--                android:textColor="@android:color/white"-->
+<!--                android:padding="10dp"-->
+<!--                android:layout_marginTop="10dp" />-->
 
             <!-- Create Post Button -->
             <Button
