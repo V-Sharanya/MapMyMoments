@@ -55,7 +55,7 @@
                     android:id="@+id/etName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Enter User Name"
+                    android:hint="Enter User Mail"
                     android:inputType="textEmailAddress"
                     android:textColor="#363A43"
                     android:textColorHint="#7A8089"

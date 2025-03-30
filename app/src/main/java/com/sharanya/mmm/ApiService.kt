@@ -22,4 +22,8 @@ interface ApiService {
 
     @DELETE("users/{id}")
     fun deleteUser(@Path("id") userId: Int): Call<Void>
+
+    @POST("users/login")  // Ensure this matches your backend login route
+    fun loginUser(@Body request: LoginRequest): Call<LoginResponse>
+
 }

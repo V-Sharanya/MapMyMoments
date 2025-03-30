@@ -37,8 +37,8 @@ class CreateFragment : Fragment() {
         // Initialize UI elements
         startDestination = view.findViewById(R.id.startDestination)
         endDestination = view.findViewById(R.id.endDestination)
-        addDestinationButton = view.findViewById(R.id.addDestinationButton)
-        dateField = view.findViewById(R.id.date)
+        //addDestinationButton = view.findViewById(R.id.addDestinationButton)
+       // dateField = view.findViewById(R.id.date)
         descriptionField = view.findViewById(R.id.description)
         selectImageButton = view.findViewById(R.id.selectImage)
         imagePreview = view.findViewById(R.id.imagePreview)
@@ -48,9 +48,9 @@ class CreateFragment : Fragment() {
         endDestination.visibility = View.GONE
 
         // Add destination button: Show end destination when clicked
-        addDestinationButton.setOnClickListener {
-            endDestination.visibility = View.VISIBLE
-        }
+//        addDestinationButton.setOnClickListener {
+//            endDestination.visibility = View.VISIBLE
+//        }
 
         // Select image button click event
         selectImageButton.setOnClickListener {
