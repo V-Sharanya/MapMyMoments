@@ -18,6 +18,7 @@ class signupscreen : AppCompatActivity() {
     private lateinit var etMail: EditText
     private lateinit var edtPass: EditText
     private lateinit var btnStart: Button
+    private lateinit var edtConfirmPass: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +29,7 @@ class signupscreen : AppCompatActivity() {
         etMail = findViewById(R.id.etEmail)
         edtPass = findViewById(R.id.edtPass)
         btnStart = findViewById(R.id.btnStart)
+        edtConfirmPass = findViewById(R.id.edtConfirmPass)
 
         btnStart.setOnClickListener {
             registerUser()
@@ -44,11 +46,61 @@ class signupscreen : AppCompatActivity() {
         val name = edtName.text.toString().trim()
         val email = etMail.text.toString().trim()
         val password = edtPass.text.toString().trim()
+        val confirmPass = edtConfirmPass.text.toString().trim()
 
-        if (name.isEmpty() || email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show()
-            return
+        var isValid = true  // Track validation status
+
+        // Reset previous errors
+        edtName.error = null
+        etMail.error = null
+        edtPass.error = null
+        edtConfirmPass.error = null
+
+        // Validate Name
+        if (name.isEmpty()) {
+            edtName.error = "Name is required"
+            edtName.setBackgroundResource(R.drawable.edittext_error) // Set red border
+            isValid = false
+        } else {
+            edtName.setBackgroundResource(R.drawable.edittext_normal) // Reset border
         }
+
+        // Validate Email
+        if (email.isEmpty()) {
+            etMail.error = "Email is required"
+            etMail.setBackgroundResource(R.drawable.edittext_error)
+            isValid = false
+        } else {
+            etMail.setBackgroundResource(R.drawable.edittext_normal)
+        }
+
+        // Validate Password
+        if (password.isEmpty()) {
+            edtPass.error = "Password is required"
+            edtPass.setBackgroundResource(R.drawable.edittext_error)
+            isValid = false
+        } else {
+            edtPass.setBackgroundResource(R.drawable.edittext_normal)
+        }
+
+        // Validate Confirm Password
+        if (confirmPass.isEmpty()) {
+            edtConfirmPass.error = "Confirm Password is required"
+            edtConfirmPass.setBackgroundResource(R.drawable.edittext_error)
+            isValid = false
+        } else {
+            edtConfirmPass.setBackgroundResource(R.drawable.edittext_normal)
+        }
+
+        // Check if passwords match
+        if (password != confirmPass) {
+            edtConfirmPass.error = "Passwords do not match"
+            edtConfirmPass.setBackgroundResource(R.drawable.edittext_error)
+            isValid = false
+        }
+
+        // Stop registration if validation fails
+        if (!isValid) return
 
         val user = users(name, email, password)
         RetrofitClient.instance.registerUser(user).enqueue(object : Callback<users> {
@@ -60,16 +112,16 @@ class signupscreen : AppCompatActivity() {
                     edtName.text.clear()
                     etMail.text.clear()
                     edtPass.text.clear()
+                    edtConfirmPass.text.clear()
 
-                    // Navigate to the login screen
+                    // Navigate to login screen
                     val intent = Intent(this@signupscreen, loginscreen::class.java)
                     startActivity(intent)
-                    finish() // Finish the signup activity so the user can't go back
+                    finish()
                 } else {
                     Toast.makeText(this@signupscreen, "Registration failed!", Toast.LENGTH_SHORT).show()
                 }
             }
-
 
             override fun onFailure(call: Call<users>, t: Throwable) {
                 Log.e("API_ERROR", "Error:", t)
@@ -77,4 +129,5 @@ class signupscreen : AppCompatActivity() {
             }
         })
     }
+
 }
