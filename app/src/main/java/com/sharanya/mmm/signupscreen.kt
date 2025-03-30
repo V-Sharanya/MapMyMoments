@@ -55,13 +55,21 @@ class signupscreen : AppCompatActivity() {
             override fun onResponse(call: Call<users>, response: Response<users>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@signupscreen, "Registration successful!", Toast.LENGTH_SHORT).show()
+
+                    // Clear input fields
                     edtName.text.clear()
                     etMail.text.clear()
                     edtPass.text.clear()
+
+                    // Navigate to the login screen
+                    val intent = Intent(this@signupscreen, loginscreen::class.java)
+                    startActivity(intent)
+                    finish() // Finish the signup activity so the user can't go back
                 } else {
                     Toast.makeText(this@signupscreen, "Registration failed!", Toast.LENGTH_SHORT).show()
                 }
             }
+
 
             override fun onFailure(call: Call<users>, t: Throwable) {
                 Log.e("API_ERROR", "Error:", t)
