@@ -1,6 +1,8 @@
 package com.sharanya.mmm
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageButton
@@ -19,11 +21,14 @@ class loginscreen : AppCompatActivity() {
     private lateinit var emailEditText: AppCompatEditText
     private lateinit var passwordEditText: AppCompatEditText
     private lateinit var loginButton: Button
+    private lateinit var sharedPreferences: SharedPreferences
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_loginscreen)
+
+        sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
         val backButton = findViewById<ImageButton>(R.id.backtologinbtn)
         loginButton = findViewById(R.id.btnlogin)
@@ -44,35 +49,24 @@ class loginscreen : AppCompatActivity() {
         val email = emailEditText.text.toString().trim()
         val password = passwordEditText.text.toString().trim()
 
-        var isValid = true  // Track validation status
+        var isValid = true
 
-        // Reset previous errors
         emailEditText.error = null
         passwordEditText.error = null
 
-        // Validate Email
         if (email.isEmpty()) {
             emailEditText.error = "Email is required"
-            emailEditText.setBackgroundResource(R.drawable.edittext_error)
             isValid = false
-        } else {
-            emailEditText.setBackgroundResource(R.drawable.edittext_normal)
         }
 
-        // Validate Password
         if (password.isEmpty()) {
             passwordEditText.error = "Password is required"
-            passwordEditText.setBackgroundResource(R.drawable.edittext_error)
             isValid = false
-        } else {
-            passwordEditText.setBackgroundResource(R.drawable.edittext_normal)
         }
 
-        // Stop login if validation fails
         if (!isValid) return
 
         loginUser(email, password)
-        Log.d("LoginDebug", "Attempting login with email: $email")
     }
 
     private fun loginUser(email: String, password: String) {
@@ -84,8 +78,9 @@ class loginscreen : AppCompatActivity() {
                     val loginResponse = response.body()
 
                     if (loginResponse != null && loginResponse.success) {
-                        Toast.makeText(this@loginscreen, loginResponse.message, Toast.LENGTH_SHORT).show()
+                        saveUserDetails(email, loginResponse.role)
 
+                        Toast.makeText(this@loginscreen, loginResponse.message, Toast.LENGTH_SHORT).show()
                         val intent = if (loginResponse.role == "admin") {
                             Intent(this@loginscreen, AdminMainActivity::class.java)
                         } else {
@@ -110,5 +105,13 @@ class loginscreen : AppCompatActivity() {
                 Toast.makeText(this@loginscreen, "Network error: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })
+    }
+
+    private fun saveUserDetails(email: String, role: String) {
+        val editor = sharedPreferences.edit()
+        editor.putString("USER_EMAIL", email)
+        editor.putString("USER_ROLE", role)
+        editor.putBoolean("IS_LOGGED_IN", true)
+        editor.apply()
     }
 }

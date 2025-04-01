@@ -12,7 +12,12 @@ import retrofit2.http.Path
 interface ApiService {
 
     @POST("users")
-    fun registerUser(@Body user: users): Call<users>
+    fun registerUser(@Body user: users): Call<responseUser>
+
+    @POST("createprofile")
+    fun crateprofile(
+        @Body user:ProfileUser
+    ):Call<Unit>
 
     @GET("users")
     fun getUsers(): Call<ResponseWrapper>

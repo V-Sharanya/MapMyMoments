@@ -103,8 +103,10 @@ class signupscreen : AppCompatActivity() {
         if (!isValid) return
 
         val user = users(name, email, password)
-        RetrofitClient.instance.registerUser(user).enqueue(object : Callback<users> {
-            override fun onResponse(call: Call<users>, response: Response<users>) {
+
+
+        RetrofitClient.instance.registerUser(user).enqueue(object : Callback<responseUser?> {
+            override fun onResponse(call: Call<responseUser?>, response: Response<responseUser?>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@signupscreen, "Registration successful!", Toast.LENGTH_SHORT).show()
 
@@ -113,6 +115,36 @@ class signupscreen : AppCompatActivity() {
                     etMail.text.clear()
                     edtPass.text.clear()
                     edtConfirmPass.text.clear()
+                    println("this is"+response.body()!!.name)
+                    createprofile(response.body()!!.id,response.body()!!.name,response.body()!!.email)
+
+                    // Navigate to login screen
+                    val intent = Intent(this@signupscreen, loginscreen::class.java)
+                    startActivity(intent)
+                    finish()
+                } else {
+                    Toast.makeText(this@signupscreen, "Registration failed!", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<responseUser?>, t: Throwable) {
+                Log.e("API_ERROR", "Error:", t)
+                Toast.makeText(this@signupscreen, "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
+       /* RetrofitClient.instance.registerUser(user).enqueue(object : Callback<responseUser> {
+            override fun onResponse(call: Call<responseUser>, response: Response<responseUser>) {
+                if (response.isSuccessful) {
+                    Toast.makeText(this@signupscreen, "Registration successful!", Toast.LENGTH_SHORT).show()
+
+                    // Clear input fields
+                    edtName.text.clear()
+                    etMail.text.clear()
+                    edtPass.text.clear()
+                    edtConfirmPass.text.clear()
+                    println("this is"+response.body()!!.id)
+                    createprofile(response.body()!!.id,response.body()!!.name,response.body()!!.email)
+
 
                     // Navigate to login screen
                     val intent = Intent(this@signupscreen, loginscreen::class.java)
@@ -128,6 +160,22 @@ class signupscreen : AppCompatActivity() {
                 Toast.makeText(this@signupscreen, "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })
-    }
+    }*/
 
+
+}
+    private fun createprofile(id:Int,name:String,email:String){
+        val profileuser=ProfileUser(id,name,email)
+        val apiservice=RetrofitClient.instance
+        val call=apiservice.crateprofile(profileuser)
+        call.enqueue(object : Callback<Unit?> {
+            override fun onResponse(call: Call<Unit?>, response: Response<Unit?>) {
+
+            }
+
+            override fun onFailure(call: Call<Unit?>, t: Throwable) {
+                Log.d("main actvity","failure in "+t.message)
+            }
+        })
+    }
 }
