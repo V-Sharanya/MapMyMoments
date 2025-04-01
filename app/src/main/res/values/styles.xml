@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="BottomNavStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemBackground">@null</item>
+        <item name="itemRippleColor">@null</item>
+    </style>
+    <style name="Theme.MyApp" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <!-- Ensures white icons on dark status bar -->
+    </style>
+
+
+</resources>

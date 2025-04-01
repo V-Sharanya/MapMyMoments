@@ -1,21 +1,23 @@
 package com.sharanya.mmm
 
-import android.app.Dialog
 import android.app.Activity
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.GridView
-import android.widget.ImageView
-import android.widget.TextView
+import android.widget.*
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class ProfileFragment : Fragment() {
 
@@ -23,6 +25,10 @@ class ProfileFragment : Fragment() {
     private lateinit var cameraIcon: ImageView
     private lateinit var editProfileButton: Button
     private lateinit var setAvatar: TextView
+    private lateinit var tvName: TextView
+    private lateinit var tvUsername: TextView
+    private lateinit var tvBio: TextView
+    private lateinit var tvGender: TextView
 
     private lateinit var pickImageLauncher: ActivityResultLauncher<Intent>
 
@@ -45,8 +51,14 @@ class ProfileFragment : Fragment() {
         cameraIcon = view.findViewById(R.id.cameraIcon)
         editProfileButton = view.findViewById(R.id.editProfileButton)
         setAvatar = view.findViewById(R.id.setAvatar)
+        tvName = view.findViewById(R.id.tvName)
+        tvUsername = view.findViewById(R.id.tvUsername)
+        tvBio = view.findViewById(R.id.tvBio)
+        tvGender = view.findViewById(R.id.tvGender)
 
-        // Image Picker for Camera Icon
+        // Fetch user data when the fragment is created
+        fetchUserData()
+
         pickImageLauncher = registerForActivityResult(
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
@@ -65,6 +77,29 @@ class ProfileFragment : Fragment() {
         setAvatar.setOnClickListener {
             showAvatarDialog()
         }
+
+        editProfileButton.setOnClickListener {
+            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+        }
+    }
+
+    // Method to fetch user profile data
+    private fun fetchUserData() {
+        RetrofitClient.instance.getUsers().enqueue(object : Callback<ResponseWrapper> {
+            override fun onResponse(call: Call<ResponseWrapper>, response: Response<ResponseWrapper>) {
+                if (response.isSuccessful && response.body() != null) {
+                    val responseWrapper = response.body()!!
+
+                    profileImage.setImageResource(R.drawable.avatar_placeholder) // Set default avatar if necessary
+                } else {
+                    Toast.makeText(requireContext(), "Failed to fetch profile data", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseWrapper>, t: Throwable) {
+                Toast.makeText(requireContext(), "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 
     private fun showAvatarDialog() {

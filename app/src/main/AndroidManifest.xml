@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+
 
     <application
         android:allowBackup="true"
@@ -24,6 +29,8 @@
         <activity
             android:name=".loginscreen"
             android:exported="false" />
+        <activity android:name=".EditProfileActivity" />
+
         <activity
             android:name=".login"
             android:exported="false" />

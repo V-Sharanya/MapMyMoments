@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,19 +14,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="20dp"
+            android:padding="24dp"
             android:orientation="vertical"
-            android:background="@color/white">
+            android:gravity="center_horizontal">
 
             <!-- Admin Title -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Admin Dashboard"
-                android:textSize="22sp"
+                android:textSize="24sp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
-                android:paddingBottom="10dp"/>
+                android:paddingBottom="16dp"/>
 
             <!-- Dashboard Cards -->
             <GridLayout
@@ -36,28 +35,28 @@
                 android:columnCount="2"
                 android:rowCount="2"
                 android:padding="10dp"
-                android:columnOrderPreserved="false"
                 android:useDefaultMargins="true">
 
                 <!-- Total Users -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
+                    android:layout_height="140dp"
                     android:layout_margin="8dp"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="10dp"
-                    android:layout_columnWeight="1">
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_columnWeight="1"
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:padding="12dp">
 
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
                             android:src="@drawable/baseline_person_24"/>
 
                         <TextView
@@ -65,7 +64,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Total Users: 100"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
                             android:textStyle="bold"
                             android:textColor="@color/black"/>
                     </LinearLayout>
@@ -74,31 +73,31 @@
                 <!-- Active Users -->
                 <androidx.cardview.widget.CardView
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
+                    android:layout_height="140dp"
                     android:layout_margin="8dp"
-                    app:cardElevation="6dp"
-                    app:cardCornerRadius="10dp"
-                    android:layout_columnWeight="1">
+                    app:cardElevation="8dp"
+                    app:cardCornerRadius="12dp"
+                    android:layout_columnWeight="1"
+                    app:cardBackgroundColor="@color/white">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:padding="10dp">
+                        android:padding="12dp">
 
                         <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:src="@drawable/baseline_person_pin_24"
-                            />
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/baseline_person_pin_24"/>
 
                         <TextView
                             android:id="@+id/txtActiveUsers"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Active Users: 50"
-                            android:textSize="16sp"
+                            android:textSize="18sp"
                             android:textStyle="bold"
                             android:textColor="@color/black"/>
                     </LinearLayout>
@@ -110,34 +109,36 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingBottom="10dp">
+                android:paddingTop="10dp">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnManageUsers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Manage Users"
-                    app:backgroundTint="@color/blue"
+                    app:cornerRadius="25dp"
                     android:textColor="@color/white"
-                    android:padding="10dp"
-                    android:layout_marginBottom="8dp"/>
+                    android:padding="12dp"
+                    android:layout_marginBottom="10dp"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnViewReports"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="View Reports"
+                    app:cornerRadius="25dp"
                     android:textColor="@color/white"
-                    android:padding="10dp"
-                    android:layout_marginBottom="8dp"/>
+                    android:padding="12dp"
+                    android:layout_marginBottom="10dp"/>
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSettings"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Settings"
+                    app:cornerRadius="25dp"
                     android:textColor="@color/white"
-                    android:padding="10dp"/>
+                    android:padding="12dp"/>
             </LinearLayout>
 
             <!-- Logout Button -->
@@ -146,10 +147,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Logout"
+                app:cornerRadius="25dp"
                 android:textColor="@color/white"
-                android:padding="10dp"
-                android:layout_marginTop="10dp"/>
-
+                android:padding="12dp"
+                android:layout_marginTop="15dp"/>
         </LinearLayout>
     </ScrollView>
 </FrameLayout>

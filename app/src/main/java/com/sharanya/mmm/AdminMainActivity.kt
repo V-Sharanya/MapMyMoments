@@ -13,7 +13,7 @@ class AdminMainActivity : AppCompatActivity() {
 
         val bottomNavigationViewAdmin = findViewById<BottomNavigationView>(R.id.bottomNavigationViewAdmin)
 
-        // Load default fragment when activity starts
+
         if (savedInstanceState == null) {
             replaceFragment(AdminHomeFragment())
         }
