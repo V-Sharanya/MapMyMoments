@@ -1,7 +1,7 @@
 package com.sharanya.mmm
 
 class users {
-    val id: Int=0
+    var id: Int=0
     val name: String
     val email: String
     val password: String

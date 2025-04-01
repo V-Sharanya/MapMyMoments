@@ -1,22 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="black">#FF000000</color>
-    <color name="white">#FFFFFF</color>
+    <color name="white">#FFFFFFFF</color>
     <color name="orange">#ff9000</color>
-    <color name="app_bar">#FF6200EE</color> <!-- Change this to your preferred color -->
-
     <color name="inactive">#C4C4C4</color>
     <color name="active">#50C2C9</color>
+    <color name="app_bar">#C77986</color>
+    <color name="heading">#fffdd0</color>
     <color name="purple_500">#6200EE</color>
     <color name="teal_700">#018786</color>
     <color name="darkBlue">#00008B</color>
     <color name="gray">#808080</color>
     <color name="blue">#0000FF</color>
     <color name="lightBlue">#ADD8E6</color>
-    <color name="appColor">#7A42FF</color>
-    <color name="subColor">#eead6a</color>
-    <color name="navColor">#9A72FF</color>
-    <color name="cardbgColor">#F7F7F7</color>
 
 
 </resources>
