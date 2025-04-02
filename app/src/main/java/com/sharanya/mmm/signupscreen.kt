@@ -172,7 +172,6 @@ class signupscreen : AppCompatActivity() {
             override fun onResponse(call: Call<Unit?>, response: Response<Unit?>) {
 
             }
-
             override fun onFailure(call: Call<Unit?>, t: Throwable) {
                 Log.d("main actvity","failure in "+t.message)
             }

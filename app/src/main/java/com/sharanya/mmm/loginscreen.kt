@@ -28,7 +28,7 @@ class loginscreen : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_loginscreen)
 
-        sharedPreferences = getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("UserPrefs", MODE_PRIVATE)
 
         val backButton = findViewById<ImageButton>(R.id.backtologinbtn)
         loginButton = findViewById(R.id.btnlogin)
@@ -72,15 +72,12 @@ class loginscreen : AppCompatActivity() {
     private fun loginUser(email: String, password: String) {
         val request = LoginRequest(email, password)
 
-        RetrofitClient.instance.loginUser(request).enqueue(object : Callback<LoginResponse> {
-            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+        RetrofitClient.instance.loginUser(request).enqueue(object : Callback<responseUser> {
+            override fun onResponse(call: Call<responseUser>, response: Response<responseUser>) {
                 if (response.isSuccessful) {
-                    val loginResponse = response.body()
-
-                    if (loginResponse != null && loginResponse.success) {
-                        saveUserDetails(email, loginResponse.role)
-
-                        Toast.makeText(this@loginscreen, loginResponse.message, Toast.LENGTH_SHORT).show()
+                        val loginResponse = response.body()
+                        saveUserDetails(loginResponse!!.id,loginResponse.email,loginResponse.role,loginResponse.name)
+                        Toast.makeText(this@loginscreen,"Login Successful", Toast.LENGTH_SHORT).show()
                         val intent = if (loginResponse.role == "admin") {
                             Intent(this@loginscreen, AdminMainActivity::class.java)
                         } else {
@@ -88,9 +85,6 @@ class loginscreen : AppCompatActivity() {
                         }
                         startActivity(intent)
                         finish()
-                    } else {
-                        Toast.makeText(this@loginscreen, "Incorrect email or password!", Toast.LENGTH_SHORT).show()
-                    }
                 } else {
                     if (response.code() == 401) {
                         Toast.makeText(this@loginscreen, "Unauthorized: Incorrect email or password!", Toast.LENGTH_SHORT).show()
@@ -101,15 +95,18 @@ class loginscreen : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+            override fun onFailure(call: Call<responseUser>, t: Throwable) {
                 Toast.makeText(this@loginscreen, "Network error: ${t.message}", Toast.LENGTH_LONG).show()
             }
+
         })
     }
 
-    private fun saveUserDetails(email: String, role: String) {
+    private fun saveUserDetails(id:Int ,email: String, role: String,name:String) {
         val editor = sharedPreferences.edit()
+        editor.putString("USER_ID",id.toString())
         editor.putString("USER_EMAIL", email)
+        editor.putString("USER_NAME", name)
         editor.putString("USER_ROLE", role)
         editor.putBoolean("IS_LOGGED_IN", true)
         editor.apply()
