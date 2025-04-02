@@ -3,11 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="25dp"
+    android:padding="10dp"
     android:background="@drawable/bg"
     android:id="@+id/main">
 
-    <!-- New Parent LinearLayout to wrap everything -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -61,18 +60,14 @@
             android:layout_marginTop="10dp"
             android:paddingLeft="10dp" />
 
-        <!-- Gender Input Field (EditText) -->
-        <EditText
-            android:id="@+id/editGender"
+        <!-- Gender Dropdown (Spinner) -->
+        <Spinner
+            android:id="@+id/genderSpinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter Gender"
-            android:inputType="text"
-            android:padding="10dp"
             android:background="@drawable/input_background"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            android:layout_marginTop="5dp" />
+            android:padding="10dp"
+            android:layout_marginTop="5dp"/>
 
         <!-- Bio Label -->
         <TextView

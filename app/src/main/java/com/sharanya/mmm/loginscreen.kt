@@ -44,7 +44,6 @@ class loginscreen : AppCompatActivity() {
             validateAndLogin()
         }
     }
-
     private fun validateAndLogin() {
         val email = emailEditText.text.toString().trim()
         val password = passwordEditText.text.toString().trim()
@@ -90,7 +89,7 @@ class loginscreen : AppCompatActivity() {
                         Toast.makeText(this@loginscreen, "Unauthorized: Incorrect email or password!", Toast.LENGTH_SHORT).show()
                     } else {
                         val errorBody = response.errorBody()?.string() ?: "Unknown error"
-                        Toast.makeText(this@loginscreen, "Login failed: $errorBody", Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@loginscreen, "Login failed", Toast.LENGTH_LONG).show()
                     }
                 }
             }
@@ -101,7 +100,6 @@ class loginscreen : AppCompatActivity() {
 
         })
     }
-
     private fun saveUserDetails(id:Int ,email: String, role: String,name:String) {
         val editor = sharedPreferences.edit()
         editor.putString("USER_ID",id.toString())

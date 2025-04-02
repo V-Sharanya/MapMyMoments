@@ -7,6 +7,7 @@ import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface ApiService {
@@ -18,6 +19,24 @@ interface ApiService {
     fun crateprofile(
         @Body user:ProfileUser
     ):Call<Unit>
+
+    @PUT("updateprofile/{id}")
+    fun updateprofile(
+        @Path("id") userId: Int,
+        @Body details:Map<String,String>
+    ):Call<Unit>
+
+    @PUT("users/{id}")
+    fun updateUser(
+        @Path("id") userId: Int,
+        @Body details: Map<String, String>
+    ):Call<Unit>
+
+    @GET("profilebyid/{id}")
+    fun getProfile(
+        @Path("id") userId: Int
+    ): Call<responseUser>
+
 
     @GET("users")
     fun getUsers(): Call<ResponseWrapper>
