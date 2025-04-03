@@ -11,34 +11,36 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/fragmentloader"
-        android:layout_marginTop="75dp"
-        android:layout_marginBottom="75dp"/>
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="55dp"/>
     <LinearLayout
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:paddingTop="20dp"
+        android:background="@color/navColor"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:gravity="center_vertical"
-        android:background="@color/app_bar"
+
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/logo"
             android:layout_width="50dp"
             android:layout_height="50dp"
+            app:tint="@color/white"
             android:src="@drawable/logo"
+            android:layout_marginLeft="10dp"
             android:layout_marginEnd="16dp" />
 
         <TextView
             android:id="@+id/app_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:text="Map my Moments"
-            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:text="MapMyMoments"
+            android:textSize="25sp"
             android:textStyle="bold"
             android:layout_weight="1" />
 
@@ -48,10 +50,14 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
+        style="@style/BottomNavStyle"
         android:layout_gravity="bottom"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
-        android:background="@color/app_bar"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        android:background="@color/navColor"
         android:id="@+id/bottom_navbar"
+        app:itemRippleColor="@null"
+        app:itemBackground="@null"
         app:menu="@menu/menu_item"/>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

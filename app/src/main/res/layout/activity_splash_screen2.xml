@@ -6,46 +6,51 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/bg"
     android:gravity="center"
+    android:background="@drawable/bg"
     tools:context=".SplashScreen">
 
-    <!-- Upper 75%: Lottie Animation -->
-    <com.airbnb.lottie.LottieAnimationView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="4"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_rawRes="@raw/mmm"/>
-
-    <!-- Lower 25%: App Name & Subheading -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:gravity="center"
-        android:background="@color/white">
+        android:gravity="center">
 
         <TextView
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="MapMyMoments"
-            android:textColor="@color/black"
-            android:textSize="36sp"
+            android:textSize="40sp"
             android:textStyle="bold"
+            android:layout_marginTop="120dp"
+            android:textColor="@color/appColor"
             android:gravity="center"/>
 
         <TextView
+            android:id="@+id/subtextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Capture, Relive, and Share Your Journey"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="italic"
-            android:gravity="center"
-            android:paddingTop="8dp"/>
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/subColor"
+            android:gravity="center"/>
+
+
+
     </LinearLayout>
+
+    <!-- Upper 75%: Lottie Animation -->
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginBottom="250dp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/mmm_animation"/>
+
+    <!-- Lower 25%: App Name & Subheading -->
+
 
 </LinearLayout>
