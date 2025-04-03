@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 import android.widget.GridView
 import android.widget.ImageView
 import android.widget.TextView
@@ -33,15 +34,14 @@ class ProfileFragment : Fragment() {
     private lateinit var tvname:TextView
     private lateinit var tvemail:TextView
     private lateinit var changePasswordButton:Button
+    private lateinit var deleteAccountButton:Button
+    private lateinit var deleteAccountPass: EditText
 
     private lateinit var tvage:TextView
     private lateinit var tvgender:TextView
     private lateinit var tvbio:TextView
 
     private var profileAvatar:Int=-1
-
-
-
 
     private lateinit var pickImageLauncher: ActivityResultLauncher<Intent>
 
@@ -71,6 +71,8 @@ class ProfileFragment : Fragment() {
         tvbio=view.findViewById(R.id.userBio)
 
         changePasswordButton = view.findViewById(R.id.changePasswordButton)
+        deleteAccountButton = view.findViewById(R.id.deleteAccountButton)
+     //   deleteAccountPass = view.findViewById(R.id.deleteAccountPass)
 
         changePasswordButton.setOnClickListener {
             val updatepasswordview=LayoutInflater.from(requireContext()).inflate(R.layout.changepasswordfield,null)
@@ -91,6 +93,13 @@ class ProfileFragment : Fragment() {
                 .show()
         }
 
+//        deleteAccountButton.setOnClickListener {
+//            val deleteaccountview=LayoutInflater.from(requireContext()).inflate(R.layout.deleteaccountfield,null)
+//            AlertDialog.Builder(requireContext())
+//                .setView(deleteaccountview)
+//                .setPositiveButton()
+//
+//        }
 
         // Set Click Listener
         editProfileButton.setOnClickListener {

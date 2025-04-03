@@ -22,12 +22,9 @@ class AdminUsersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val view = inflater.inflate(R.layout.fragment_admin_users, container, false)
-
         recyclerView = view.findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-
         fetchUsers()  // Load users
-
         return view
     }
 
