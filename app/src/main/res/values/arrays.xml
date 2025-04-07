@@ -4,4 +4,21 @@
         <item>Male</item>
         <item>Female</item>
     </string-array>
+    <string-array name="font_names">
+        <item>Open Sans</item>
+        <item>Dancing Script</item>
+        <item>Oswald</item>
+<!--        <item>Korean (Language)</item>-->
+<!--        <item>Spanish (Language)</item>-->
+    </string-array>
+
+    <string-array name="font_values">
+        <item>font/open_sans.ttf</item>
+        <item>font/dancing_script.ttf</item>
+        <item>font/oswald.ttf</item>
+<!--        <item>font/korean.ttf</item>-->
+<!--        <item>font/spanish.ttf</item>-->
+    </string-array>
+
+
 </resources>

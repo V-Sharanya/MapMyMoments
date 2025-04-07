@@ -9,6 +9,10 @@
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <!-- Ensures white icons on dark status bar -->
+
+        <!-- Set the custom font globally -->
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
     </style>
 
 

@@ -70,6 +70,25 @@ class SettingsFragment : PreferenceFragmentCompat() {
             requireActivity().recreate() // Fixes redirection issue
             true
         }
+        //Language and font style
+        val fontPref = findPreference<ListPreference>("FONT_STYLE")
+        fontPref?.setOnPreferenceChangeListener { _, newValue ->
+            val fontPath = newValue as String
+            PreferenceManager.getDefaultSharedPreferences(requireContext())
+                .edit().putString("FONT_STYLE", fontPath).apply()
+
+            Toast.makeText(requireContext(), "Font changed! Restarting app...", Toast.LENGTH_SHORT).show()
+
+            val intent = requireActivity().packageManager
+                .getLaunchIntentForPackage(requireActivity().packageName)
+            intent?.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent!!)
+            requireActivity().finishAffinity()
+
+            true
+        }
+
+
 
         // 🔑 Logout
         val logoutPref = findPreference<Preference>("LOGOUT")

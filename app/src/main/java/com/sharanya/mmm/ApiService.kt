@@ -49,7 +49,7 @@ interface ApiService {
 
 
     @DELETE("users/{id}")
-    fun deleteUser(@Path("id") userId: Int): Call<Void>
+    fun deleteUser(@Path("id") userId: Int): Call<Unit>
 
     @POST("users/login")  // Ensure this matches your backend login route
     fun loginUser(@Body request: LoginRequest): Call<responseUser>
@@ -63,6 +63,8 @@ interface ApiService {
         @Part images: List<MultipartBody.Part>,
         @Part("endDestination") endDestination: RequestBody?
     ): Call<ResponseBody>
+
+
 
 //
 

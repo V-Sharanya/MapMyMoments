@@ -23,7 +23,7 @@
             android:layout_marginHorizontal="10dp">
 
             <!-- Title -->
-            <TextView
+            <com.sharanya.mmm.utils.AppTextView
                 android:id="@+id/createPost"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -41,7 +41,7 @@
                 android:layout_marginTop="10dp">
 
                 <!-- Start Destination Input -->
-                <EditText
+                <com.sharanya.mmm.utils.AppEditText
                     android:id="@+id/startDestination"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
             </LinearLayout>
 
             <!-- Date Input -->
-            <EditText
+            <com.sharanya.mmm.utils.AppEditText
                 android:id="@+id/date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                 android:layout_marginTop="10dp" />
 
             <!-- Description Input -->
-            <EditText
+            <com.sharanya.mmm.utils.AppEditText
                 android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                 android:layout_marginTop="10dp" />
 
             <!-- Add Images Section -->
-            <TextView
+            <com.sharanya.mmm.utils.AppEditText
                 android:id="@+id/addImagesLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

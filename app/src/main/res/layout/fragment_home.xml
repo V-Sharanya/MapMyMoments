@@ -31,7 +31,7 @@
                 android:scaleType="centerCrop"
                 android:contentDescription="Profile"/>
 
-            <TextView
+            <com.sharanya.mmm.utils.AppTextView
                 android:id="@+id/tv_name"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -51,7 +51,7 @@
                 android:src="@android:drawable/ic_menu_close_clear_cancel"/>
         </LinearLayout>
 
-        <TextView
+        <com.sharanya.mmm.utils.AppTextView
             android:id="@+id/tv_destination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
             android:textColor="@color/subColor"
             android:padding="5dp"/>
 
-        <TextView
+        <com.sharanya.mmm.utils.AppTextView
             android:id="@+id/tv_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -103,7 +103,7 @@
                 android:contentDescription="Like Button"
                 android:padding="5dp"/>
 
-            <TextView
+            <com.sharanya.mmm.utils.AppTextView
                 android:id="@+id/tv_like_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

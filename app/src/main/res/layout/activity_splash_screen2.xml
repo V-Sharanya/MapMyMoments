@@ -17,7 +17,7 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <TextView
+        <com.sharanya.mmm.utils.AppTextView
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             android:textColor="@color/appColor"
             android:gravity="center"/>
 
-        <TextView
+        <com.sharanya.mmm.utils.AppTextView
             android:id="@+id/subtextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

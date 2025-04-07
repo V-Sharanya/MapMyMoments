@@ -40,6 +40,17 @@
             app:icon="@drawable/ic_language" />
     </PreferenceCategory>
 
+    <ListPreference
+        app:key="FONT_STYLE"
+        app:title="Font Style"
+        app:summary="Select your preferred font"
+        app:dialogTitle="Choose Font"
+        app:entries="@array/font_names"
+        app:entryValues="@array/font_values"/>
+<!--        app:icon="@drawable/ic_font"-->
+
+
+
     <!-- Account Section -->
     <PreferenceCategory app:title="Account">
         <Preference

@@ -7,6 +7,10 @@
         <item name="colorSecondary">#03DAC5</item>
         <item name="android:colorBackground">#FFFFFF</item>
         <item name="android:statusBarColor">?attr/colorPrimary</item>
+        <item name="fontFamily">@font/open_sans</item>
+        <item name="android:fontFamily">@font/open_sans</item>
+<!--        <item name="fontFamily">@font/dancing_script</item>-->
+<!--        <item name="android:fontFamily">@font/dancing_script</item>-->
     </style>
 
     <style name="Theme.Mmm" parent="Base.Theme.Mmm" />

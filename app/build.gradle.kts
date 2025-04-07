@@ -75,4 +75,9 @@ dependencies {
     implementation("androidx.fragment:fragment-ktx:1.6.1")
     implementation("androidx.appcompat:appcompat:1.6.1")
 
+    // ViewPump + Calligraphy
+    implementation("io.github.inflationx:calligraphy3:3.1.1")
+    implementation("io.github.inflationx:viewpump:2.0.3")
+
+
 }

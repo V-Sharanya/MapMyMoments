@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:gravity="center">
 
-        <TextView
+        <com.sharanya.mmm.utils.AppTextView
             android:id="@+id/pro_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,7 +67,7 @@
                     android:layout_toEndOf="@id/profileImage"
                     android:orientation="vertical">
 
-                    <TextView
+                    <com.sharanya.mmm.utils.AppTextView
                         android:id="@+id/userName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -76,7 +76,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <com.sharanya.mmm.utils.AppTextView
                         android:id="@+id/usermail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                         android:orientation="horizontal"
                         android:layout_marginTop="8dp">
 
-                        <TextView
+                        <com.sharanya.mmm.utils.AppTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Age: "
@@ -99,7 +99,7 @@
                             android:textSize="14sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <com.sharanya.mmm.utils.AppTextView
                             android:id="@+id/userAge"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                             android:textSize="14sp"
                             android:layout_marginEnd="15dp"/>
 
-                        <TextView
+                        <com.sharanya.mmm.utils.AppTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Gender: "
@@ -116,7 +116,7 @@
                             android:textSize="14sp"
                             android:textStyle="bold"/>
 
-                        <TextView
+                        <com.sharanya.mmm.utils.AppTextView
                             android:id="@+id/userGender"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -128,7 +128,7 @@
             </RelativeLayout>
 
             <!-- Set Avatar Text -->
-            <TextView
+            <com.sharanya.mmm.utils.AppTextView
                 android:id="@+id/setAvatar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <TextView
+                <com.sharanya.mmm.utils.AppTextView
                     android:id="@+id/activityLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                     android:src="@drawable/ic_edit" />
             </RelativeLayout>
 
-            <TextView
+            <com.sharanya.mmm.utils.AppTextView
                 android:id="@+id/userBio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

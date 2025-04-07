@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import android.content.Intent
+import android.os.Build
 import android.util.Log
+import android.view.HapticFeedbackConstants
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
@@ -32,6 +34,8 @@ class signupscreen : AppCompatActivity() {
         edtConfirmPass = findViewById(R.id.edtConfirmPass)
 
         btnStart.setOnClickListener {
+            it.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
+            Log.d("HAPTIC_FEEDBACK", "Button haptic triggered")
             registerUser()
         }
 
@@ -100,7 +104,16 @@ class signupscreen : AppCompatActivity() {
         }
 
         // Stop registration if validation fails
-        if (!isValid) return
+        if (!isValid) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                btnStart.performHapticFeedback(HapticFeedbackConstants.REJECT)
+            } else {
+                btnStart.performHapticFeedback(HapticFeedbackConstants.LONG_PRESS) // fallback
+            }
+            return
+        }
+
+
 
         val user = users(name, email, password)
 
@@ -109,6 +122,12 @@ class signupscreen : AppCompatActivity() {
             override fun onResponse(call: Call<responseUser?>, response: Response<responseUser?>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@signupscreen, "Registration successful!", Toast.LENGTH_SHORT).show()
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        btnStart.performHapticFeedback(HapticFeedbackConstants.CONFIRM)
+                    } else {
+                        btnStart.performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY)
+                    }
+
 
                     // Clear input fields
                     edtName.text.clear()
@@ -132,7 +151,7 @@ class signupscreen : AppCompatActivity() {
                 Toast.makeText(this@signupscreen, "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
             }
         })
-       /* RetrofitClient.instance.registerUser(user).enqueue(object : Callback<responseUser> {
+       /* RetrofitClient.instance.registerUser(user).enqueue(object : lback<responseUser> {
             override fun onResponse(call: Call<responseUser>, response: Response<responseUser>) {
                 if (response.isSuccessful) {
                     Toast.makeText(this@signupscreen, "Registration successful!", Toast.LENGTH_SHORT).show()

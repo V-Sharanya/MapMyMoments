@@ -14,7 +14,7 @@
         android:orientation="vertical"
         android:padding="10dp">
 
-        <TextView
+        <com.sharanya.mmm.utils.AppTextView
             android:id="@+id/pro_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
             android:paddingLeft="10dp" />
 
         <!-- Age Label -->
-        <TextView
+        <com.sharanya.mmm.utils.AppTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Age"
@@ -37,7 +37,7 @@
             android:paddingLeft="10dp" />
 
         <!-- Age Input Field -->
-        <EditText
+        <com.sharanya.mmm.utils.AppEditText
             android:id="@+id/editAge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
             android:layout_marginTop="5dp" />
 
         <!-- Gender Label -->
-        <TextView
+        <com.sharanya.mmm.utils.AppTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Gender"
@@ -70,7 +70,7 @@
             android:layout_marginTop="5dp"/>
 
         <!-- Bio Label -->
-        <TextView
+        <com.sharanya.mmm.utils.AppTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Bio"
@@ -81,7 +81,7 @@
             android:paddingLeft="10dp" />
 
         <!-- Bio Input Field -->
-        <EditText
+        <com.sharanya.mmm.utils.AppEditText
             android:id="@+id/editBio"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -106,5 +106,4 @@
             android:layout_marginTop="20dp"
             android:padding="10dp"/>
     </LinearLayout>
-
 </LinearLayout>

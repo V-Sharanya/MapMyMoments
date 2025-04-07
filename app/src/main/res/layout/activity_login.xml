@@ -24,7 +24,7 @@
             android:textStyle="bold"
             android:textSize="17sp"
             android:textColor="@color/black"
-            android:layout_width="130dp"
+            android:layout_width="130dp"    
             android:layout_height="55dp"
             android:layout_marginRight="20dp"
             android:backgroundTint="@color/white" /> <!-- Adds space to the right -->

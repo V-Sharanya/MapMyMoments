@@ -75,7 +75,7 @@ class loginscreen : AppCompatActivity() {
             override fun onResponse(call: Call<responseUser>, response: Response<responseUser>) {
                 if (response.isSuccessful) {
                         val loginResponse = response.body()
-                        saveUserDetails(loginResponse!!.id,loginResponse.email,loginResponse.role,loginResponse.name)
+                        saveUserDetails(loginResponse!!.id,loginResponse.email,loginResponse.role,loginResponse.name,loginResponse.password)
                         Toast.makeText(this@loginscreen,"Login Successful", Toast.LENGTH_SHORT).show()
                         val intent = if (loginResponse.role == "admin") {
                             Intent(this@loginscreen, AdminMainActivity::class.java)
@@ -100,13 +100,14 @@ class loginscreen : AppCompatActivity() {
 
         })
     }
-    private fun saveUserDetails(id:Int ,email: String, role: String,name:String) {
+    private fun saveUserDetails(id:Int ,email: String, role: String,name:String,password: String) {
         val editor = sharedPreferences.edit()
         editor.putString("USER_ID",id.toString())
         editor.putString("USER_EMAIL", email)
         editor.putString("USER_NAME", name)
         editor.putString("USER_ROLE", role)
         editor.putBoolean("IS_LOGGED_IN", true)
+        editor.putString("USER_PASSWORD", password)
         editor.apply()
     }
 }

@@ -45,8 +45,8 @@ class UserAdapter(responseWrapper: ResponseWrapper) : RecyclerView.Adapter<UserA
     override fun getItemCount(): Int = users.size
 
     private fun deleteUser(userId: Int, position: Int, holder: UserViewHolder) {
-        RetrofitClient.instance.deleteUser(userId).enqueue(object : Callback<Void> {
-            override fun onResponse(call: Call<Void>, response: Response<Void>) {
+        RetrofitClient.instance.deleteUser(userId).enqueue(object : Callback<Unit?> {
+            override fun onResponse(call: Call<Unit?>, response: Response<Unit?>) {
                 if (response.isSuccessful) {
                     users.removeAt(position) // Remove from list
                     notifyItemRemoved(position) // Notify RecyclerView
@@ -58,9 +58,10 @@ class UserAdapter(responseWrapper: ResponseWrapper) : RecyclerView.Adapter<UserA
                 }
             }
 
-            override fun onFailure(call: Call<Void>, t: Throwable) {
-                Toast.makeText(holder.itemView.context, "Network Error: ${t.message}", Toast.LENGTH_LONG).show()
+            override fun onFailure(call: Call<Unit?>, t: Throwable) {
+                TODO("Not yet implemented")
             }
         })
+
     }
 }

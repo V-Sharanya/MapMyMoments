@@ -7,6 +7,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -72,7 +73,7 @@ class ProfileFragment : Fragment() {
 
         changePasswordButton = view.findViewById(R.id.changePasswordButton)
         deleteAccountButton = view.findViewById(R.id.deleteAccountButton)
-     //   deleteAccountPass = view.findViewById(R.id.deleteAccountPass)
+//        deleteAccountPass = view.findViewById(R.id.deleteAccountPass)
 
         changePasswordButton.setOnClickListener {
             val updatepasswordview=LayoutInflater.from(requireContext()).inflate(R.layout.changepasswordfield,null)
@@ -93,13 +94,31 @@ class ProfileFragment : Fragment() {
                 .show()
         }
 
-//        deleteAccountButton.setOnClickListener {
-//            val deleteaccountview=LayoutInflater.from(requireContext()).inflate(R.layout.deleteaccountfield,null)
-//            AlertDialog.Builder(requireContext())
-//                .setView(deleteaccountview)
-//                .setPositiveButton()
-//
-//        }
+        deleteAccountButton.setOnClickListener {
+            val deleteAccountView = LayoutInflater.from(requireContext()).inflate(R.layout.deleteaccountfield, null)
+            val passwordEditText = deleteAccountView.findViewById<EditText>(R.id.deleteAccountPass)
+            val confirmButton = deleteAccountView.findViewById<Button>(R.id.deleteAccountButton)
+
+            val alertDialog = AlertDialog.Builder(requireContext())
+                .setView(deleteAccountView)
+                .create()
+
+            confirmButton.setOnClickListener {
+                val enteredPassword = passwordEditText.text.toString()
+                val storedPassword = getUserPassword()
+
+                if (enteredPassword == storedPassword) {
+                    Toast.makeText(requireContext(), "Password matched. Proceeding with deletion.", Toast.LENGTH_SHORT).show()
+                    deleteAccount(getUserId())
+                    // Your delete account logic here
+                } else {
+                    Toast.makeText(requireContext(), "Incorrect password. Try again.", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            alertDialog.show()
+        }
+
 
         // Set Click Listener
         editProfileButton.setOnClickListener {
@@ -130,10 +149,8 @@ class ProfileFragment : Fragment() {
         setAvatar.setOnClickListener {
             showAvatarDialog()
         }
-
         val userId = getUserId()
         fetchProfileDetails(userId)
-
         return view
     }
 
@@ -143,28 +160,41 @@ class ProfileFragment : Fragment() {
         return userId?.toIntOrNull() ?: -1
 
     }
+    private fun getUserPassword():String?{
+        val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", AppCompatActivity.MODE_PRIVATE)
+        val userPassword = sharedPreferences.getString("USER_PASSWORD", null)
+        return userPassword
+    }
 
-    private fun updatePassword(id:Int,password:String){
-        val details= mapOf(
+    private fun updatePassword(id: Int, password: String) {
+        val details = mapOf(
             "password" to password,
             "role" to "",
             "email" to "",
             "name" to ""
         )
-        val apiservice=RetrofitClient.instance
-        val call=apiservice.updateUser(id,details)
+        val apiservice = RetrofitClient.instance
+        val call = apiservice.updateUser(id, details)
+
         call.enqueue(object : Callback<Unit?> {
             override fun onResponse(call: Call<Unit?>, response: Response<Unit?>) {
-                if(response.isSuccessful){
-                    Toast.makeText(requireContext(),"password updated successfully",Toast.LENGTH_SHORT).show()
+                if (response.isSuccessful) {
+                    Toast.makeText(requireContext(), "Password updated successfully", Toast.LENGTH_SHORT).show()
+
+                    // ✅ Update SharedPreferences with the new password
+                    val prefs = requireContext().getSharedPreferences("UserPrefs", AppCompatActivity.MODE_PRIVATE)
+                    prefs.edit().putString("USER_PASSWORD", password).apply()
+                } else {
+                    Toast.makeText(requireContext(), "Failed to update password", Toast.LENGTH_SHORT).show()
                 }
             }
 
             override fun onFailure(call: Call<Unit?>, t: Throwable) {
-                TODO("Not yet implemented")
+                Toast.makeText(requireContext(), "Error: ${t.message}", Toast.LENGTH_SHORT).show()
             }
         })
     }
+
 
     private fun getUserName():String{
         val sharedPreferences = requireContext().getSharedPreferences("UserPrefs", AppCompatActivity.MODE_PRIVATE)
@@ -237,5 +267,33 @@ class ProfileFragment : Fragment() {
             }
         })
     }
+    private fun deleteAccount(userId: Int) {
+        val call = RetrofitClient.instance.deleteUser(userId) // or deleteUserAndProfile()
+
+       call.enqueue(object : Callback<Unit?> {
+           override fun onResponse(call: Call<Unit?>, response: Response<Unit?>) {
+               if (response.isSuccessful) {
+                   Toast.makeText(requireContext(), "Account deleted successfully", Toast.LENGTH_SHORT).show()
+
+                   val prefs = requireContext().getSharedPreferences("UserPrefs", AppCompatActivity.MODE_PRIVATE)
+                   prefs.edit().clear().apply()
+
+                   val intent = Intent(requireContext(), loginscreen::class.java)
+                   startActivity(intent)
+                   requireActivity().finish()
+               } else {
+                   Log.e("DeleteAccount", "Response code: ${response.code()}, error: ${response.errorBody()?.string()}")
+                   Toast.makeText(requireContext(), "Error deleting account", Toast.LENGTH_SHORT).show()
+               }
+           }
+
+
+           override fun onFailure(call: Call<Unit?>, t: Throwable) {
+               Log.d("main activity","failure in "+t.message)
+           }
+       })
+    }
+
+
 
 }
